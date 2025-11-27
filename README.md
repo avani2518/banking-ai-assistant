@@ -1,130 +1,148 @@
 🏦 Banking RAG Assistant
-AI-Powered Smart Banking Chatbot (React + Node.js + Qdrant + Claude AI)
 
-A full-stack banking assistant that answers customer queries using real account data, vector search, and LLM intelligence.
-This project demonstrates a production-ready RAG (Retrieval-Augmented Generation) system built for banking use cases.
+A retrieval-augmented banking assistant that provides customer-specific answers using real account data and document-based context. The system performs vector search to retrieve relevant information and uses an LLM to generate accurate, personalized responses.
 
-🚀 Overview
+📌 1. Project Overview
 
-The Banking RAG Assistant allows users to ask natural language questions like:
+This application allows users to enter an account number and ask banking-related questions.
+The backend:
 
-“What is my balance for account 10001111?”
+- retrieves documents linked to that account
 
-“Show my recent transactions.”
+- performs vector search
 
-“When is my next EMI due?”
+- sends the relevant context to the LLM
 
-The system retrieves account-specific documents, passes them to Claude Sonnet 4, and returns accurate, natural responses.
+The objective is to demonstrate a complete RAG pipeline adapted for banking use cases, focusing on reliability and data isolation.
 
-🎯 Features
-✔️ Account-Specific Answers
+🚀 2. Features
 
-Each query is filtered by account number — ensures no cross-account leakage.
+1. Account-specific responses
 
-✔️ AI-Powered Responses (Claude)
+2. Retrieval-Augmented Generation (RAG) architecture
 
-Uses Anthropic Claude Sonnet 4 to generate friendly and accurate answers.
+3. Semantic vector search using Qdrant
 
-✔️ Vector Search with Qdrant
+4. LLM-generated natural language answers
 
-79+ banking documents indexed using embeddings for smart retrieval.
+5. Strict customer data separation
 
-✔️ Real-Time, Secure Information
+6. Preloaded sample accounts (savings, loans, credit cards, FDs)
 
-Searches your Qdrant collection instantly for relevant account data.
+⚙️ 3. How It Works
 
-✔️ Full-Stack Production Architecture
+- User enters an account number and asks a question
 
-React frontend → Node.js backend → Qdrant vector DB → Claude AI.
+- Backend fetches all documents linked to that account
 
-🏗️ Architecture
-Frontend (React + Vite)
-    ⇩
-Backend (Node.js + Express)
-    ⇩
-Qdrant Vector DB (Document Retrieval)
-    ⇩
-Claude AI (Answer Generation)
+- Vector search identifies the most relevant content
 
-🛠️ Tech Stack
-Component	Technology
-Frontend	React + Vite
-Backend	Node.js + Express
-Vector DB	Qdrant
-AI Model	Claude Sonnet 4
-Search	RAG (Retrieval-Augmented Generation)
-Embeddings	Claude / OpenAI embeddings (depending on setup)
-📊 Sample Accounts
+- Retrieved context + user query are combined
 
-These are included for demo purposes:
+- LLM generates a final response based only on allowed data
 
-ACC1001 – John Doe — ₹1,25,450 balance
+💬 4. Example Queries
 
-ACC1002 – Sarah Smith — ₹32,150 credit card outstanding
+a. What is my current balance?
 
-ACC1003 – Rajesh Kumar — ₹38,50,000 home loan
+b. When is my EMI due?
 
-ACC1004 – Priya Sharma — Senior Citizen FDs worth ₹10,00,000
+c. How much is my credit card outstanding?
 
-🔍 How It Works (Simple Version)
+d. Give details of my fixed deposits.
 
-User enters:
-“What is my account balance for ACC1001?”
+e. Explain the charges for my account.
 
-Backend retrieves only documents related to ACC1001
+👤 5. Sample Accounts Included
 
-Ranks the most relevant ones using vector search
+1. ACC1001 – Savings account
 
-Builds a RAG prompt with retrieved context
+2. ACC1002 – Credit card
 
-Sends the prompt to Claude Sonnet 4
+3. ACC1003 – Home loan
 
-Returns a personalized, accurate answer
+4. ACC1004 – Senior citizen fixed deposits
 
-📂 Project Structure
-banking-ai-assistant-main/
+Each account includes structured fields and supporting documents stored inside the vector database.
+
+🛠️ 6. Technology Stack
+Frontend
+
+React
+
+Vite
+
+Backend
+
+Node.js
+
+Express
+
+Storage & Retrieval
+
+Qdrant (vector database)
+
+RAG-based retrieval pipeline
+
+LLM
+
+Claude Sonnet 4
+
+📁 7. Project Structure
+project-root/
 │
 ├── backend/
-│   ├── index.js
-│   ├── llm.js
-│   ├── query.js
-│   ├── qdrant.js
-│   └── embed.js
+│   ├── server.js
+│   ├── routes/
+│   ├── services/
+│   ├── rag/
+│   ├── data/
+│   └── config/
 │
-└── frontend/
-    ├── src/
-    │   ├── pages/Dashboard.tsx
-    │   └── components
-    ├── vite.config.js
-    └── package.json
+├── frontend/
+│   ├── src/
+│   ├── components/
+│   ├── pages/
+│   └── api/
+│
+├── README.md
+└── package.json
 
-🔧 Setup Instructions
-1️⃣ Clone the repo
-git clone https://github.com/avani2518/banking-ai-assistant-main.git
-cd banking-ai-assistant-main
+🧩 8. Getting Started
+Prerequisites
 
-2️⃣ Backend Setup
+Node.js installed
 
-Create .env (never commit this file):
+Qdrant running locally or via Docker
 
-ANTHROPIC_API_KEY=your_key_here
-QDRANT_URL=http://localhost:6333
-VECTOR_COLLECTION=bank_docs
+Environment variables set up (.env)
 
-
-Install dependencies:
-
+Install dependencies
 npm install
+
+Run the application
 npm run dev
 
-3️⃣ Frontend Setup
-cd frontend
-npm install
-npm run dev
+🎯 9. What This Project Demonstrates
 
+- End-to-end RAG pipeline
 
-Frontend runs on:
-👉 http://localhost:8080
+- Integrating LLMs with financial data
 
-Backend runs on:
-👉 http://localhost:8000
+- Building context-aware systems
+
+- Enforcing strict customer-level data separation
+
+- Clean interaction between frontend and backend
+
+🔮 10. Possible Enhancements
+
+- User authentication and sessions
+
+- UI/UX improvements
+
+- Additional datasets and document types
+
+- Multi-language support
+
+- Integration with real banking APIs
