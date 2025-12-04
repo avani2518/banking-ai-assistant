@@ -134,30 +134,21 @@ const Dashboard = () => {
       <Header />
 
       <main className="container mx-auto px-6 py-8 max-w-6xl">
-        <section className="hero-background p-8 rounded-xl mb-6 card-elevated">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold leading-tight">Banking RAG - Contextual AI for finance</h2>
-              <p className="text-muted-foreground mt-2">Securely query account data, see retrieved documents and an LLM answer based on real context. Built for demos and easy integration.</p>
-            </div>
-            <div className="flex items-center gap-3">
-              <a href="#" className="site-cta bg-primary text-primary-foreground">Quick Start</a>
-              <a href="#" className="site-cta border border-border bg-muted text-foreground">Integration Guide</a>
+        <section className="hero-background p-8 rounded-xl mb-6 card-elevated w-full">
+          <div className="flex flex-col items-stretch gap-4 w-full">
+            <div className="w-full">
+              <h2 className="text-3xl md:text-4xl font-extrabold leading-tight text-[#0b2545] w-full">Banking RAG System - Context-Aware Financial Assistant</h2>
+              <p className="text-muted-foreground mt-2 w-full max-w-full">Securely access account data and receive clear, explainable insights powered by context-aware retrieval and AI.</p>
+
+              <div className="flex items-center gap-2 mt-4 flex-wrap w-full">
+                <span className="text-xs px-2.5 py-0.5 rounded-full bg-muted/50 text-muted-foreground">Secure</span>
+                <span className="text-xs px-2.5 py-0.5 rounded-full bg-muted/50 text-muted-foreground">Contextual</span>
+                <span className="text-xs px-2.5 py-0.5 rounded-full bg-muted/50 text-muted-foreground">Explainable</span>
+                <span className="text-xs px-2.5 py-0.5 rounded-full bg-muted/50 text-muted-foreground">Quick to integrate</span>
+              </div>
             </div>
           </div>
         </section>
-        <div className="mb-6 bg-info/10 border border-info/20 rounded-lg p-4 flex items-start gap-3">
-          <AlertCircle className="w-5 h-5 text-info mt-0.5 flex-shrink-0" />
-          <div>
-              <p className="text-sm text-foreground">
-              <span className="font-semibold">Backend Status:</span> This dashboard will connect to{' '}
-              <code className="bg-muted px-1.5 py-0.5 rounded text-xs">{(import.meta.env as any).VITE_API_BASE_URL || 'http://localhost:8000'}/query</code>
-            </p>
-            <p className="text-xs text-muted-foreground mt-1">
-              Demo data will be shown if the backend is unavailable.
-            </p>
-          </div>
-        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-1 space-y-6">
@@ -207,7 +198,7 @@ const Dashboard = () => {
             ) : (
               <div className="bg-card rounded-xl shadow-sm border border-border p-10 text-center">
                 <h3 className="text-xl font-semibold mb-2">No query run yet</h3>
-                <p className="text-muted-foreground">Enter an account number and prompt to run a contextual banking query. Demo data appears if the backend is unavailable.</p>
+                <p className="text-muted-foreground">Enter an account number and prompt to run a contextual banking query. ~Demo data appears if the backend is unavailable.</p>
               </div>
             )}
           </div>

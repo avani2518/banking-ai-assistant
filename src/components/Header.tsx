@@ -2,29 +2,40 @@ import { Database } from "lucide-react";
 
 const Header = () => {
   return (
-    <header className="bg-card border-b border-border">
-      <div className="container mx-auto px-6 py-6">
+    <header className="bg-card border-b border-border shadow-sm">
+      <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between gap-6">
+
+          {/* Left: Brand */}
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-primary/10 rounded-lg">
-              <Database className="w-8 h-8 text-primary" />
+            <div className="p-2.5 bg-primary/10 rounded-lg border border-border flex items-center justify-center">
+              <Database className="w-7 h-7 text-primary" />
             </div>
-            <div>
-              <h1 className="text-2xl font-bold text-foreground leading-tight">Banking RAG</h1>
-              <p className="text-xs text-muted-foreground -mt-1">AI-powered contextual assistant</p>
+            <div className="leading-tight">
+              <h1 className="text-lg md:text-2xl font-semibold text-[#07143a]">
+                Banking RAG
+              </h1>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                Intelligent contextual assistant
+              </p>
             </div>
           </div>
 
-          <nav className="hidden md:flex items-center gap-6">
-            <a className="text-sm text-muted-foreground hover:text-foreground" href="#">Dashboard</a>
-            <a className="text-sm text-muted-foreground hover:text-foreground" href="#">Docs</a>
-            <a className="text-sm text-muted-foreground hover:text-foreground" href="#">Integration</a>
-          </nav>
+          {/* Divider */}
+          <div className="border-l border-border h-6 mx-4"></div>
 
-          <div className="flex items-center gap-3">
-            <button className="text-sm px-4 py-2 rounded-md border border-border bg-muted text-foreground hover:bg-primary/10">Sign in</button>
-            <button className="text-sm px-4 py-2 rounded-md bg-primary text-primary-foreground">Get started</button>
+          {/* Right side: Date and Version */}
+          <div className="flex flex-col items-end text-right gap-0.5">
+            <div className="text-xs text-muted-foreground">
+              {new Date().toLocaleDateString(undefined, {
+                weekday: "short",
+                month: "short",
+                day: "numeric",
+              })}
+            </div>
+            <div className="text-xs text-muted-foreground">v1.0.0</div>
           </div>
+
         </div>
       </div>
     </header>
